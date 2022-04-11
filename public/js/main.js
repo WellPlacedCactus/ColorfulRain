@@ -20,14 +20,24 @@ mouse.down = false;
 
     // START DEMO
 
-    c.fillStyle = 'blue';
-    c.fillRect(0, 0, canvas.width, canvas.height);
-
     const partHandler = new PartHandler([]);
 
     // ANIMATION LOOP
 
     const loop = () => {
+
+      // ADD
+
+      for (let i = 0; i < 10; i++) {
+        partHandler.add(new Part(
+          randint(-canvas.width / 2, canvas.width),
+          randint(-100, -50),
+          randint(1, 5),
+          1 + Math.random(),
+          randint(1, 5),
+          Date.now() * 0.05
+        ));
+      }
 
       // TICK
 
@@ -35,7 +45,7 @@ mouse.down = false;
 
       // CLEAR
 
-      c.fillStyle = 'rgba(0, 0, 0, 1)';
+      c.fillStyle = 'rgba(0, 0, 0, 0.1)';
       c.fillRect(0, 0, canvas.width, canvas.height);
 
       // DRAW
@@ -44,8 +54,8 @@ mouse.down = false;
 
       requestAnimationFrame(loop);
     };
-    
-    // requestAnimationFrame(loop);
+
+    requestAnimationFrame(loop);
   };
 
   // EVENT HANDLERS
