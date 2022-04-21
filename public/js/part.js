@@ -24,8 +24,15 @@ class Part {
     this.x += this.vx;
     this.y += this.vy;
 
+    // bounce
+    if (this.y > canvas.height) {
+      if (this.vx < 0) this.vx *= -1;
+      this.vx *= 2;
+      this.vy *= -1;
+    }
+
     // die
-    if (this.x > canvas.width || this.y > canvas.height) {
+    if (this.x > canvas.width) {
       this.die();
     }
   }

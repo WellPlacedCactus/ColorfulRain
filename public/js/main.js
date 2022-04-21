@@ -28,15 +28,17 @@ mouse.down = false;
 
       // ADD
 
-      for (let i = 0; i < 10; i++) {
-        partHandler.add(new Part(
-          randint(-canvas.width / 2, canvas.width),
-          randint(-100, -50),
-          randint(1, 5),
-          1 + Math.random(),
-          randint(1, 5),
-          Date.now() * 0.05
-        ));
+      if (mouse.down) {
+        for (let i = 0; i < 360; i += 36) {
+          partHandler.add(new Part(
+            mouse.x,
+            mouse.y,
+            randint(1, 5),
+            1 + Math.random(),
+            randint(1, 5),
+            Date.now() * 0.05
+          ));
+        }
       }
 
       // TICK
